@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .navbar {
     display: flex;
     justify-content: space-around;
@@ -13,18 +13,18 @@
     );
   }
   .toggleBtn {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
   }
   .troll {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
   }
   .inputBoxes {
-    padding-top: 50px;
+    padding-top: 20px;
     display: grid;
     grid-template: 40px 40px / 1fr 1fr;
-    gap: 20px;
+    gap: 10px;
   }
   .inputtext {
     text-align: center;
@@ -35,8 +35,8 @@
   }
 
   .deleteicon {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
   }
   .result-box {
     width: 200px;
@@ -50,18 +50,18 @@
   }
 
   .grid-container {
-    display: grid;
-    place-items: center;
+    display: grid !important;
+    place-items: center !important;
   }
   .memeContainer {
-    width: 300px;
-    height: 300px;
+    width: 200px !important;
+    height: 200px !important;
     object-fit: contain;
     padding-top: 5px;
   }
   .allmemes {
-    height: 100%;
-    width: 100%;
+    height: 70%;
+    width: 70%;
   }
 }
 .navbar {
