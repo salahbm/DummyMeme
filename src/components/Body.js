@@ -77,14 +77,14 @@ const Body = () => {
         <div className="inputBoxes">
           <input
             className="inputtext"
-            placeholder="top words"
+            placeholder="top text"
             onChange={handleTopTextChange}
             value={topText}
             style={{ background: isNight ? "white" : "#A9A9A9" }}
           />
           <input
             className="inputtext"
-            placeholder="bottom words"
+            placeholder="bottom text"
             onChange={handleBottomTextChange}
             value={bottomText}
             style={{
@@ -93,14 +93,16 @@ const Body = () => {
           />
         </div>
         {topText && bottomText ? null : (
-          <div>
+          <div
+            style={{ borderWidth: 1, borderRadius: 30, borderColor: "black" }}
+          >
             <p
               style={{
                 color: isNight ? "red" : "white",
                 textAlign: "center",
               }}
             >
-              input the text!
+              Tip: enter the texts then choose the template {";)"}
             </p>
           </div>
         )}

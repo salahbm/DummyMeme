@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
-import { moon, sun, topArrow } from "./assets";
+import { insta, moon, sun, topArrow } from "./assets";
 import Body from "./components/Body";
 import Header from "./components/Header";
 export const DataContext = createContext();
@@ -49,19 +49,47 @@ function App() {
 
         <Body />
         {showButton && (
-          <img
-            src={topArrow}
-            alt="up"
-            onClick={scrollToTop}
+          <div
             style={{
               position: "fixed",
               bottom: "30px",
               right: "30px",
               zIndex: "100",
-              height: 40,
-              width: 40,
             }}
-          ></img>
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <a
+                href="https://www.instagram.com/im._.salah/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={insta}
+                  alt="up"
+                  style={{
+                    height: 30,
+                    width: 30,
+                    marginBottom: 4,
+                  }}
+                ></img>
+              </a>
+            </div>
+            <img
+              src={topArrow}
+              alt="up"
+              onClick={scrollToTop}
+              style={{
+                height: 40,
+                width: 40,
+              }}
+            ></img>
+          </div>
         )}
       </div>
     </DataContext.Provider>

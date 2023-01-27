@@ -5,5 +5,6 @@ const moon = require("./icons/moon.png");
 const sun = require("./icons/sun.png");
 const deleted = require("./icons/delete.png");
 const topArrow = require("./icons/topArrow.png");
+const insta = require("./icons/insta.png");
 
-export { troll, swap, trollresult, sun, moon, deleted, topArrow };
+export { troll, swap, trollresult, sun, moon, deleted, topArrow, insta };
