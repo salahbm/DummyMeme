@@ -1,69 +1,3 @@
-@media (max-width: 500px) {
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    border-radius: 10px;
-    border-color: black;
-    align-items: center;
-
-    background: linear-gradient(
-      360deg,
-      rgba(32, 12, 209, 0.333) 1.2%,
-      #a626d3 100%
-    );
-  }
-  .toggleBtn {
-    width: 20px;
-    height: 20px;
-  }
-  .troll {
-    width: 30px;
-    height: 30px;
-  }
-  .inputBoxes {
-    padding-top: 20px;
-    display: grid;
-    grid-template: 40px 40px / 1fr 1fr;
-    gap: 10px;
-  }
-  .inputtext {
-    text-align: center;
-    border-width: 0.5px;
-  }
-  .inputtext::placeholder {
-    color: #a626d3;
-  }
-
-  .deleteicon {
-    width: 10px;
-    height: 10px;
-  }
-  .result-box {
-    width: 200px;
-    height: 190px;
-    object-fit: cover;
-    margin: 0 auto;
-  }
-  .generated-result {
-    height: 70%;
-    width: 70%;
-  }
-
-  .grid-container {
-    display: grid !important;
-    place-items: center !important;
-  }
-  .memeContainer {
-    width: 200px !important;
-    height: 200px !important;
-    object-fit: contain;
-    padding-top: 5px;
-  }
-  .allmemes {
-    height: 70%;
-    width: 70%;
-  }
-}
 .navbar {
   display: flex;
   justify-content: space-around;
@@ -104,8 +38,8 @@
   height: 20px;
 }
 .result-box {
-  width: 370px;
-  height: 360px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   margin: 0 auto;
 }
@@ -116,11 +50,12 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  /* grid-template-columns: repeat(3, 1fr); */
 }
 .memeContainer {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   padding-top: 5px;
 }
