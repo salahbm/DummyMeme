@@ -15,7 +15,7 @@ const Header = () => {
             fontFamily: "revert-layer",
           }}
         >
-          Random Meme
+          Dummy Meme
         </h1>
 
         <img
