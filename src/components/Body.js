@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { deleted, trollresult } from "../assets";
+import { deleted, swap, topArrow, trollresult } from "../assets";
 
-// import { CopyToClipboard } from "react-copy-to-clipboard";
 import { DataContext } from "../App";
 const Body = () => {
   const { isNight } = useContext(DataContext);
@@ -9,7 +8,8 @@ const Body = () => {
   const [bottomText, setBottomText] = useState("");
   const [memeUrl, setMemeUrl] = useState("");
   const [memes, setMemes] = useState([]);
-  const [hideAll, setHideAll] = useState(true);
+  const [hideAll, setHideAll] = useState(false);
+  const [selectedMeme, setSelectedMeme] = useState("");
 
   const handleTopTextChange = (event) => {
     setTopText(event.target.value);
@@ -30,18 +30,31 @@ const Body = () => {
 
     setMemeUrl("");
   };
-  const handleClick = async (memId) => {
+
+  const handleClick = async (rmemeId) => {
     const API_KEY = "compcomp";
     const PASSWORD = "qwert123!";
-
-    // const randomMeme =
-    //   data.data.memes[Math.floor(Math.random() * data.data.memes.length)];
+    setSelectedMeme(rmemeId);
     if (topText && bottomText) {
-      const apiUrl = `https://api.imgflip.com/caption_image?template_id=${memId}&username=${API_KEY}&password=${PASSWORD}&text0=${topText}&text1=${bottomText}`;
+      const apiUrl = `https://api.imgflip.com/caption_image?template_id=${rmemeId}&username=${API_KEY}&password=${PASSWORD}&text0=${topText}&text1=${bottomText}`;
       const imgResponse = await fetch(apiUrl);
       const imgData = await imgResponse.json();
       setMemeUrl(imgData.data.url);
+    } else {
+      setMemeUrl(memes.find((elem) => elem.id === rmemeId).url);
     }
+  };
+  const randomMeme = async () => {
+    const API_KEY = "compcomp";
+    const PASSWORD = "qwert123!";
+
+    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+
+    const apiUrl = `https://api.imgflip.com/caption_image?template_id=${randomMeme.id}&username=${API_KEY}&password=${PASSWORD}&text0=${topText}&text1=${bottomText}`;
+    const imgResponse = await fetch(apiUrl);
+    const imgData = await imgResponse.json();
+
+    setMemeUrl(imgData.data.url);
   };
   useEffect(() => {
     fetchMemes();
@@ -70,57 +83,113 @@ const Body = () => {
         console.log(error);
       });
   }
+  //scroll to up
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div>
-      <div>
-        <div className="inputBoxes">
-          <input
-            className="inputtext"
-            placeholder="top text"
-            onChange={handleTopTextChange}
-            value={topText}
-            style={{ background: isNight ? "white" : "#A9A9A9" }}
-          />
-          <input
-            className="inputtext"
-            placeholder="bottom text"
-            onChange={handleBottomTextChange}
-            value={bottomText}
-            style={{
-              background: isNight ? "white" : "#A9A9A9",
-            }}
-          />
-        </div>
-        {topText && bottomText ? null : (
-          <div
-            style={{ borderWidth: 1, borderRadius: 30, borderColor: "black" }}
-          >
-            <p
-              style={{
-                color: isNight ? "red" : "white",
-                textAlign: "center",
-              }}
-            >
-              Tip: enter the texts then choose the template {";)"}
-            </p>
-          </div>
-        )}
-        {topText && bottomText ? (
-          <div
-            onClick={clearBoxes}
-            style={{
-              color: isNight ? "white" : "#A9A9A9",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <h5 style={{ color: "black" }}>clear boxes</h5>
-            <img className="deleteicon" src={deleted} alt="delete" />
-          </div>
-        ) : null}
+      <div className="inputBoxes">
+        <input
+          className="inputtext"
+          placeholder="top text"
+          onChange={handleTopTextChange}
+          value={topText}
+          style={{ background: isNight ? "white" : "#A9A9A9" }}
+        />
+        <input
+          className="inputtext"
+          placeholder="bottom text"
+          onChange={handleBottomTextChange}
+          value={bottomText}
+          style={{
+            background: isNight ? "white" : "#A9A9A9",
+          }}
+        />
       </div>
+      {topText && bottomText ? (
+        <p
+          style={{
+            color: isNight ? "red" : "white",
+            textAlign: "center",
+          }}
+        >
+          share & tag me on IG {";)"}
+        </p>
+      ) : (
+        <p
+          style={{
+            color: isNight ? "red" : "white",
+            textAlign: "center",
+          }}
+        >
+          Tip: enter the texts then choose the template {";)"}
+        </p>
+      )}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+
+          gap: "20px",
+        }}
+      >
+        <button
+          className="generatebtn"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 40,
+
+            background: isNight ? "white" : "#A9A9A9",
+
+            borderWidth: 0.5,
+            height: 30,
+          }}
+          onClick={() => handleClick(selectedMeme)}
+        >
+          Generate this
+          <img className="btnIcon" src={topArrow} alt="swap"></img>
+        </button>
+        <button
+          className="generatebtn"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 40,
+
+            background: isNight ? "white" : "#A9A9A9",
+
+            borderWidth: 0.5,
+            height: 30,
+          }}
+          onClick={() => randomMeme()}
+        >
+          random template
+          <img src={swap} alt="swap" style={{ height: 20, width: 20 }}></img>
+        </button>
+      </div>
+      {topText && bottomText ? (
+        <div
+          onClick={clearBoxes}
+          style={{
+            color: isNight ? "white" : "#A9A9A9",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h5 style={{ color: "black" }}>clear boxes</h5>
+          <img className="deleteicon" src={deleted} alt="delete" />
+        </div>
+      ) : null}
+
       <div className="result-box">
         {memeUrl ? (
           <img
@@ -172,13 +241,13 @@ const Body = () => {
             textAlign: "center",
             borderRadius: 40,
             background: isNight ? "white" : "#A9A9A9",
-            width: "30%",
+            width: "40%",
             borderWidth: 0.5,
-            height: 30,
+            height: 35,
           }}
           onClick={() => setHideAll(!hideAll)}
         >
-          Show Template
+          Hide/Show Template
         </button>
       </div>
 
@@ -195,15 +264,16 @@ const Body = () => {
           >
             tap to copy id
           </h4>
+
           {memes.map((meme) => (
             <div id="memeContainer" className="memeContainer" key={meme.id}>
-              {/* <CopyToClipboard text={setMemeId(meme.id)}> */}
               <img
                 className="allmemes"
                 src={meme.url}
                 alt={meme.name}
                 onClick={() => {
                   handleClick(meme.id);
+                  scrollToTop();
                 }}
               />
             </div>

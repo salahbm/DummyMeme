@@ -31,8 +31,8 @@ function App() {
   function btnClick() {
     setIsNight(!isNight);
     setIcon({
-      content: icon.content === "Light" ? "Dark" : "Light",
-      icon: icon.content === "Light" ? sun : moon,
+      content: icon.content === "Dark" ? "Light" : "Dark",
+      icon: icon.content === "Dark" ? sun : moon,
     });
   }
 
@@ -42,7 +42,7 @@ function App() {
         style={{
           background: isNight ? "white" : "gray",
           padding: 10,
-          height: "1005",
+          overflow: "auto",
         }}
       >
         <Header />

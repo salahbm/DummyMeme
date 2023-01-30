@@ -1,65 +1,161 @@
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  border-radius: 10px;
-  border-color: black;
-  align-items: center;
+@media only screen and (max-width: 480px) {
+  /* styles for mobile browsers */
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    border-color: black;
+    align-items: center;
 
-  background: linear-gradient(
-    360deg,
-    rgba(32, 12, 209, 0.333) 1.2%,
-    #a626d3 100%
-  );
-}
-.toggleBtn {
-  width: 40px;
-  height: 40px;
-}
-.troll {
-  width: 60px;
-  height: 60px;
-}
-.inputBoxes {
-  padding-top: 50px;
-  display: grid;
-  grid-template: 40px 40px / 1fr 1fr;
-  gap: 20px;
-}
-.inputtext {
-  text-align: center;
-  border-width: 0.5px;
-}
-.inputtext::placeholder {
-  color: #a626d3;
+    background: linear-gradient(
+      360deg,
+      rgba(32, 12, 209, 0.333) 1.2%,
+      #a626d3 100%
+    );
+  }
+  .toggleBtn {
+    width: 40px;
+    height: 40px;
+  }
+  .troll {
+    width: 60px;
+    height: 60px;
+  }
+  .inputBoxes {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    height: 20px;
+  }
+  .inputtext {
+    text-align: center;
+    border-width: 0.5px;
+  }
+  .inputtext::placeholder {
+    color: #a626d3;
+  }
+
+  .deleteicon {
+    width: 20px;
+    height: 20px;
+  }
+  .result-box {
+    width: 200px;
+    height: 220px;
+    object-fit: cover;
+    margin: 0 auto;
+    padding-top: 5px;
+  }
+  .generated-result {
+    height: 100%;
+    width: 100%;
+  }
+
+  .grid-container {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .memeContainer {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    padding-top: 5px;
+  }
+  .allmemes {
+    height: 100%;
+    width: 100%;
+  }
+  .generatebtn {
+    width: 37%;
+    margin-top: 10px;
+    height: 20;
+  }
+  .btnIcon {
+    height: 20px;
+    width: 20px;
+    transform: rotate(180deg);
+  }
 }
 
-.deleteicon {
-  width: 20px;
-  height: 20px;
-}
-.result-box {
-  width: 200px;
-  height: 220px;
-  object-fit: cover;
-  margin: 0 auto;
-}
-.generated-result {
-  height: 100%;
-  width: 100%;
-}
+@media only screen and (min-width: 481px) {
+  /* styles for web browsers */
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    border-color: black;
+    align-items: center;
 
-.grid-container {
-  display: grid;
-  place-items: center;
-  /* grid-template-columns: repeat(3, 1fr); */
-}
-.memeContainer {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  padding-top: 5px;
-}
-.allmemes {
-  height: 100%;
-  width: 100%;
+    background: linear-gradient(
+      360deg,
+      rgba(32, 12, 209, 0.333) 1.2%,
+      #a626d3 100%
+    );
+  }
+  .toggleBtn {
+    width: 40px;
+    height: 40px;
+  }
+  .troll {
+    width: 60px;
+    height: 60px;
+  }
+  .inputBoxes {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    height: 30px;
+  }
+  .inputtext {
+    text-align: center;
+    border-width: 0.5px;
+  }
+  .inputtext::placeholder {
+    color: #a626d3;
+  }
+
+  .deleteicon {
+    width: 20px;
+    height: 20px;
+  }
+  .result-box {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  .generated-result {
+    height: 100%;
+    width: 100%;
+  }
+
+  .grid-container {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .memeContainer {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    padding-top: 5px;
+  }
+  .allmemes {
+    height: 100%;
+    width: 100%;
+  }
+  .generatebtn {
+    width: 37%;
+    margin-top: 10px;
+    height: 20;
+  }
+  .btnIcon {
+    height: 20px;
+    width: 20px;
+    transform: rotate(180deg);
+  }
 }
